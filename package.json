@@ -1,6 +1,6 @@
 {
   "name": "com.sipvlib.utilities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "SiPVLib Utilities",
   "description": "General-purpose singleton base classes (Singleton, MonoSingleton), extension methods for classes/longs/GameObjects, and misc utilities (retry backoff, sub-asset attribute) used across SiPVLib.",
   "unity": "6000.3",
