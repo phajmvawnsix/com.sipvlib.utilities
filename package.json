@@ -1,13 +1,17 @@
 {
   "name": "com.sipvlib.utilities",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "displayName": "SiPVLib Utilities",
   "description": "General-purpose singleton base classes (Singleton, MonoSingleton), extension methods for classes/longs/GameObjects, and misc utilities (retry backoff, sub-asset attribute) used across SiPVLib.",
-  "unity": "6000.3",
+  "unity": "2022.3",
   "author": {
     "name": "phajmvawnsix"
   },
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phajmvawnsix/com.sipvlib.utilities.git"
+  },
   "keywords": [
     "sipvlib",
     "utilities"

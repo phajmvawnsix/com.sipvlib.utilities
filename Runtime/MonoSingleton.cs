@@ -57,7 +57,13 @@ namespace SiPVLib.Utilities
 
                 if (_instance != null) return _instance;
 
+#if UNITY_2023_1_OR_NEWER
+                // FindFirstObjectByType skips the sorting pass FindObjectOfType always paid for,
+                // and doesn't touch inactive/disabled objects (matching FindObjectOfType's default).
                 _instance = FindFirstObjectByType<T>();
+#else
+                _instance = FindObjectOfType<T>();
+#endif
 
                 if (_instance == null)
                 {

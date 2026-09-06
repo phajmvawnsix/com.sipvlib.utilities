@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.1] - 2026-09-03
+
+Lower minimum Unity Editor version to 2022.3 LTS (was 6000.3) and add a `repository`
+field to `package.json`, both required for OpenUPM registry submission.
+
+`MonoSingleton.Instance` now falls back to the obsolete `FindObjectOfType<T>()` below Unity 2023.1,
+since `FindFirstObjectByType<T>()` (introduced 2023.1) doesn't exist on 2022.3. 2023.1+ still uses
+`FindFirstObjectByType`, so newer Editors keep its performance benefit over the sorted legacy scan.
+
 ## [2.0.0] - 2026-09-01
 
 **Breaking:** `SafeArea` moved to `com.sipvlib.extras.components`. Its namespace changed from
