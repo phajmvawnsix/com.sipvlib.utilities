@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2] - 2026-09-03
+
+Pin the com.sipvlib.debugging dependency to a semver version (1.1.1) instead of a git URL.
+OpenUPM's registry resolves dependency versions as npm-style semver and rejects a package whose
+dependencies field contains a raw git URL outright — this fixes "Unable to add package" errors when
+installing via the OpenUPM registry.
+
 ## [2.0.1] - 2026-09-03
 
 Lower minimum Unity Editor version to 2022.3 LTS (was 6000.3) and add a `repository`
