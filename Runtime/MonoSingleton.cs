@@ -1,7 +1,4 @@
 using SiPVLib.Debugging;
-#if ODIN_INSPECTOR
-using Sirenix.OdinInspector;
-#endif
 using UnityEngine;
 
 namespace SiPVLib.Utilities
@@ -11,12 +8,7 @@ namespace SiPVLib.Utilities
     /// Ensures that only one instance of the specified component exists in the scene.
     /// </summary>
     /// <typeparam name="T">The type of the singleton component.</typeparam>
-#if ODIN_INSPECTOR
-    // With Odin installed, private/non-serialized fields on subclasses are also serialized via Odin's serializer.
-    public abstract class MonoSingleton<T> : SerializedMonoBehaviour where T : MonoSingleton<T>
-#else
     public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
-#endif
     {
         /// <summary>
         /// The singleton instance.
@@ -24,9 +16,6 @@ namespace SiPVLib.Utilities
         private static T _instance;
 
         [Header("Singleton Settings")]
-#if ODIN_INSPECTOR
-        [FoldoutGroup("Singleton Settings", Expanded = false)]
-#endif
         [SerializeField]
         [Tooltip("If true, the singleton instance will not be destroyed when loading a new scene.")]
         protected bool _dontDestroyOnLoad = true;

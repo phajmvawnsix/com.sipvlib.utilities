@@ -1,7 +1,6 @@
 using System;
-#if ODIN_INSPECTOR
-using Sirenix.Serialization;
-#endif
+using System.Text;
+using UnityEngine;
 
 namespace SiPVLib.Utilities
 {
@@ -24,21 +23,15 @@ namespace SiPVLib.Utilities
         }
 
         /// <summary>
-        /// Serializes this object (including private/protected [SerializeField] members) via Odin's
-        /// serializer and encodes the result as a Base64 string. Requires Odin Inspector to be installed
-        /// (not bundled with this package); throws <see cref="NotSupportedException"/> otherwise.
+        /// Serializes this object (including private/protected [SerializeField] members) via
+        /// <see cref="JsonUtility"/> and encodes the result as a Base64 string.
         /// </summary>
-        /// <returns>Base64-encoded binary representation of the object.</returns>
+        /// <returns>Base64-encoded representation of the object.</returns>
         public static string ToBase64String<T>(this T obj) where T : class
         {
-#if ODIN_INSPECTOR
-            var bytes = SerializationUtility.SerializeValue(obj, DataFormat.Binary);
-            return Convert.ToBase64String(bytes);
-#else
-            throw new NotSupportedException(
-                $"{nameof(ToBase64String)} requires Odin Inspector to be installed (defines ODIN_INSPECTOR). " +
-                "Odin is a paid Unity Asset Store asset and is not bundled with com.sipvlib.utilities.");
-#endif
+            if (obj == null) return string.Empty;
+
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonUtility.ToJson(obj)));
         }
     }
 }

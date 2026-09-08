@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.0] - 2026-09-08
+
+Odin Inspector is no longer required or used anywhere in this package. MonoSingleton drops SerializedMonoBehaviour for plain MonoBehaviour. DeepClone/ToBase64String no longer throw without Odin installed -- they now use JsonUtility unconditionally (covers Unity-serializable types; dictionaries not backed by SerializableDictionary, interface-typed fields and polymorphic fields without [SerializeReference] will not round-trip). Adds SerializableDictionary<TKey,TValue> (a Dictionary subclass with a paired key/value inspector drawer), replacing what Odin's serializer previously enabled for dictionary fields.
+
 ## [2.0.2] - 2026-09-03
 
 Pin the com.sipvlib.debugging dependency to a semver version (1.1.1) instead of a git URL.
